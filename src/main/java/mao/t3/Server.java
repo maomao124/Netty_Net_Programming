@@ -100,6 +100,32 @@ public class Server
                     //处理连接事件
                     SocketChannel socketChannel = ssc.accept();
                     log.debug("连接事件：" + socketChannel);
+                    //非阻塞
+                    socketChannel.configureBlocking(false);
+                    //注册，事件为OP_WRITE
+                    socketChannel.register(selector, SelectionKey.OP_READ);
+                    log.debug("连接已注册到selector");
+                }
+
+                //读事件
+                else if (selectionKey.isReadable())
+                {
+                    SocketChannel socketChannel = (SocketChannel) selectionKey.channel();
+                    //处理读事件
+                    log.debug("读事件：" + socketChannel);
+                    int read = socketChannel.read(byteBuffer);
+                    if (read == -1)
+                    {
+                        selectionKey.cancel();
+                        socketChannel.close();
+                    }
+                    else
+                    {
+                        byteBuffer.flip();
+                        ByteBufferUtil.debugAll(byteBuffer);
+                        byteBuffer.clear();
+                    }
+
                 }
 
                 // 处理完毕，必须将事件移除
