@@ -30,7 +30,7 @@ public class Server
     /**
      * 日志
      */
-    private static final Logger log = LoggerFactory.getLogger(mao.t1.Server.class);
+    private static final Logger log = LoggerFactory.getLogger(mao.t2.Server.class);
 
     /**
      * main方法

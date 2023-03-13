@@ -1,4 +1,4 @@
-package mao.t2;
+package mao.t3;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,15 +12,15 @@ import java.util.Scanner;
 
 /**
  * Project name(项目名称)：Netty_Net_Programming
- * Package(包名): mao.t2
+ * Package(包名): mao.t3
  * Class(类名): Client
  * Author(作者）: mao
  * Author QQ：1296193245
  * GitHub：https://github.com/maomao124/
  * Date(创建日期)： 2023/3/13
- * Time(创建时间)： 20:09
+ * Time(创建时间)： 20:50
  * Version(版本): 1.0
- * Description(描述)： 非阻塞模式 - 客户端
+ * Description(描述)： select - 客户端
  */
 
 public class Client
@@ -28,7 +28,7 @@ public class Client
     /**
      * 日志
      */
-    private static final Logger log = LoggerFactory.getLogger(mao.t2.Client.class);
+    private static final Logger log = LoggerFactory.getLogger(mao.t3.Client.class);
 
     /**
      * main方法
