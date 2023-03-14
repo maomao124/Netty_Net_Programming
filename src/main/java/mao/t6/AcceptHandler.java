@@ -74,7 +74,7 @@ public class AcceptHandler implements Runnable
             //创建WorkerHandler
             workerHandlers = initWorkerHandlers();
             log.debug("服务启动");
-            new Thread(this, "Accept");
+            new Thread(this, "Accept").start();
             isRegister = true;
         }
     }
@@ -86,6 +86,7 @@ public class AcceptHandler implements Runnable
         WorkerHandler[] workerHandlers = new WorkerHandler[processors];
         for (int i = 0; i < processors; i++)
         {
+            log.debug("初始化WorkerHandler" + i);
             workerHandlers[i] = new WorkerHandler(i);
         }
         return workerHandlers;

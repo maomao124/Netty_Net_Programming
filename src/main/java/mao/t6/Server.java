@@ -3,6 +3,8 @@ package mao.t6;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.IOException;
+
 /**
  * Project name(项目名称)：Netty_Net_Programming
  * Package(包名): mao.t6
@@ -23,8 +25,9 @@ public class Server
      */
     private static final Logger log = LoggerFactory.getLogger(Server.class);
 
-    public static void main(String[] args)
+    public static void main(String[] args) throws IOException
     {
-
+        AcceptHandler acceptHandler = new AcceptHandler();
+        acceptHandler.register(8080);
     }
 }

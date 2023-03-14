@@ -77,7 +77,8 @@ public class WorkerHandler implements Runnable
             //创建selector
             selector = Selector.open();
             //开启线程
-            new Thread(this, "Worker-" + index);
+            new Thread(this, "Worker-" + index).start();
+            log.debug("启动工作线程：Worker-" + index + " ,监听读事件");
             isRegister = true;
         }
         //添加一个任务到队列
@@ -125,7 +126,7 @@ public class WorkerHandler implements Runnable
                         {
                             SocketChannel socketChannel = (SocketChannel) selectionKey.channel();
                             log.debug("读事件：" + socketChannel);
-                            ByteBuffer buffer = ByteBuffer.allocate(128);
+                            ByteBuffer buffer = ByteBuffer.allocate(32);
                             int read = socketChannel.read(buffer);
                             if (read == -1)
                             {
